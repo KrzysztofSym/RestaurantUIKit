@@ -8,8 +8,24 @@ document.addEventListener("DOMContentLoaded", function () {
         if (i === 4) {
             number.classList.add("active");
         }
+        number.classList.add("showUp");
         daysDiv.appendChild(number);
     }
+    let showUpP = document.querySelectorAll('.showUp');
+
+    showUpP.forEach((element) => {
+        element.addEventListener('click', function () {
+            showUpP.forEach((el) => {
+                el.classList.remove('active');
+            });
+
+            element.classList.add('active');
+        });
+    });
+
+    showUpP.forEach((element, index) => {
+        element.style.animationDelay = (index + 1) * 0.1 + 1 + "s";
+    });
 });
 
 let hourList = [
@@ -38,8 +54,23 @@ function initApp() {
         if (key === 1 ) {
             newP.classList.add("active");
         }
-        newP.innerHTML = `<p>${value.hour}</p>`;
+        newP.innerHTML = `${value.hour} pm`;
         hours.appendChild(newP);
+    })
+    let showUpP = document.querySelectorAll('.hours p');
+
+    showUpP.forEach((element) => {
+        element.addEventListener('click', function () {
+            showUpP.forEach((el) => {
+                el.classList.remove('active');
+            });
+
+            element.classList.add('active');
+        });
+    });
+
+    showUpP.forEach((element, index) => {
+        element.style.animationDelay = (index + 1) * 0.1 + 1 + "s";
     })
 }
 initApp();
